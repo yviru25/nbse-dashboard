@@ -1,0 +1,88 @@
+{
+    "studentMenu":[
+        {
+            "displayName":"Download Admit Card",
+            "router":"downloadAdmitCard",
+            "iconName":"person_add"
+        },
+        {
+            "displayName":"Download Marksheet",
+            "router":"downloadMarkSheet",
+            "iconName":"person_add_disabled"
+        },
+        {
+            "displayName":"Re-Verification",
+            "router":"reVerification",
+            "iconName":"list_alt"
+        },
+        {
+            "displayName":"Re-evaluation & Scanned Copy",
+            "router":"reEvaluation",
+            "iconName":"bookmarks"
+        }
+    ],
+    "schoolMenu":[
+        {
+            "displayName":"Dashboard",
+            "router":"dashboard",
+            "iconName":"dashboard"
+        },
+        {
+            "displayName":"Order Recieved",
+            "router":"downloadAdmitCard",
+            "iconName":"store"
+        },
+        {
+            "displayName":"Enrolled Students Online",
+            "router":"downloadMarkSheet",
+            "iconName":"person_add"
+        },
+        {
+            "displayName":"Pending Enrolled Students",
+            "router":"reVerification",
+            "iconName":"person_add_disabled"
+        },
+        {
+            "displayName":"Attendance Sheet",
+            "router":"reEvaluation",
+            "iconName":"list_alt"
+        },
+        {
+            "displayName":"Admit Card",
+            "router":"reEvaluation",
+            "iconName":"credit_card"
+        },
+        {
+            "displayName":"Marksheet",
+            "router":"reEvaluation",
+            "iconName":"bookmarks"
+        }
+    ],
+    "adminMenu":[
+        {
+            "displayName":"Dashboard",
+            "router":"dashboard",
+            "iconName":"dashboard"
+        },
+        {
+            "displayName":"School Managment",
+            "router":"school-managment",
+            "iconName":"person_add"
+        },
+        {
+            "displayName":"Download Marksheet",
+            "router":"download-marksheet",
+            "iconName":"cloud_download"
+        },
+        {
+            "displayName":"Download attendance Sheet",
+            "router":"download-attendance-sheet",
+            "iconName":"cloud_download"
+        },
+        {
+            "displayName":"Download Packing Sheet",
+            "router":"download-packaging-sheet",
+            "iconName":"cloud_download"
+        }
+    ]
+}
