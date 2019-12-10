@@ -1,0 +1,58 @@
+<div class="login-page">
+    <div class="content">
+        <!-- <h1 class="app-name">Sb Admin Material</h1> -->
+        <form class="login-form" #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && doLogin(loginForm)" fxFlex >
+            <div class="text-center">
+                <h2 class="app-name">NBSE&#x2122;</h2>
+            </div>
+           
+            <div fxFlex  fxlayout="row" fxlayout.lt-md="column">
+                <div fxFlexFill>
+                    <mat-form-field class="w-100">
+                        <mat-select placeholder="Select Role" name="role" #role="ngModel" [(ngModel)]="loginModel.role" required >
+                            <mat-option *ngFor="let roleItem of roleType"  
+                                 [value]="roleItem.roleId" >{{roleItem.displayName}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div fxFlex  fxlayout="row" fxlayout.lt-md="column">
+                <div fxFlexFill>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Username" required name="username" #username="ngModel" [(ngModel)]="loginModel.username">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxFlex  fxLayout="row" fxLayout.lt-md="column">
+                <div fxFlexFill>
+                    <mat-form-field class="w-100">
+                        <input matInput type="password" required placeholder="Password" name="password" #password="ngModel"  [(ngModel)]="loginModel.password">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxFlex  fxLayout="row" fxLayout.lt-md="column" style="margin: 20px 0 30px 0">
+                <!-- <div fxFlex>
+                    <mat-checkbox color="primary" name="rememberMe" #rememberMe="ngModel"  [(ngModel)]="loginModel.rememberMe" >Remember Me</mat-checkbox>
+                </div> -->
+                <!-- <div fxFlex  fxLayoutAlign="end">
+                    <a href="javascript:void(0)">Forget Password</a>
+                </div> -->
+            </div>
+            <div fxFlex  fxLayout="row" fxLayout.lt-md="column">
+                <div fxFlexFill>
+                    <button type="submit" mat-raised-button color="primary" [disabled]="!loginForm.form.valid" class="w-100">Login</button>
+                </div>
+            </div>
+          </form>  
+    </div>
+</div>
+<ngx-spinner
+bdOpacity = 1
+bdColor = "rgba(4,4,4,0.43)"
+size = "medium"
+color = "#fff"
+type = "ball-fall"
+[fullScreen] = "true">
+<h4 style="color: white;font-weight: 700;"> Please Wait... </h4>
+</ngx-spinner>

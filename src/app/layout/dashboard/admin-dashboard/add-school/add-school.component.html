@@ -1,0 +1,85 @@
+<div fxLayout="column" class="p-2">
+
+    <div class="p-2">
+        <mat-card>
+          <form #addSchoolForm="ngForm" (ngSubmit)="addSchoolForm.form.valid && registerSchool(addSchoolForm)"  fxLayout="column" fxLayoutAlign="center">
+            <mat-card-header fxLayoutAlign="center">                
+                <mat-card-subtitle><h2>Add New School</h2></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content fxLayout="column" fxLayoutAlign="center">
+                <table cellspacing="0" class="w-100">
+                    <tr>
+                        <td>
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="School Code"  name="schoolCode" #schoolCode="ngModel" [(ngModel)]="addSchoolModel.schoolCode" required>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="School Name" name="schoolName" #schoolName="ngModel" [(ngModel)]="addSchoolModel.schoolName" required>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>                            
+                <mat-form-field class="w-100">
+                    <input matInput placeholder="School Address" name="schoolAddress" #schoolAddress="ngModel" [(ngModel)]="addSchoolModel.schoolAddress" required>
+                </mat-form-field>
+                <table cellspacing="0" class="w-100">
+                    <tr>
+                        <td>
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="School City" name="schoolCity" #schoolCity="ngModel" [(ngModel)]="addSchoolModel.schoolCity" required>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="School Phone" name="schoolPhone" #schoolPhone="ngModel" [(ngModel)]="addSchoolModel.schoolPhone" required>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="School Email" name="schoolEmail" #schoolEmail="ngModel" [(ngModel)]="addSchoolModel.schoolEmail" required>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>                   
+                <table cellspacing="0" class="w-100">
+                    <tr>
+                        <td>
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="Coordinator Name" name="coordinatorName" #coordinatorName="ngModel" [(ngModel)]="addSchoolModel.coordinatorName" required>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="Total Student Count" name="totalStudentCount" #totalStudentCount="ngModel" [(ngModel)]="addSchoolModel.totalStudentCount" required>
+                            </mat-form-field>
+                        </td>
+                        <td>
+                            <mat-form-field class="w-100">
+                                <input matInput placeholder="Total Subject Count" name="totalSubjectCount" #totalSubjectCount="ngModel" [(ngModel)]="addSchoolModel.totalSubjectCount" required>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>  
+                <div fxLayoutAlign="center">
+                    <button type="submit" [disabled]="!addSchoolForm.form.valid" mat-raised-button color="primary" class="w-100">Register School</button>
+                </div>                 
+            </mat-card-content>
+            <mat-card-actions>
+               
+              </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+<ngx-alerts></ngx-alerts>    
+<ngx-spinner
+    bdOpacity = 1
+    bdColor = "rgba(4,4,4,0.43)"
+    size = "medium"
+    color = "#fff"
+    type = "square-spin"
+    [fullScreen] = "true">
+    <h4 style="color: white;font-weight: 700;"> Please Wait... </h4>
+</ngx-spinner>
+</div>

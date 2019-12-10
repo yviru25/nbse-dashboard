@@ -1,0 +1,43 @@
+@import 'material';
+@import 'main';
+@import 'utils';
+@import 'responsive';
+@import '~ngx-toastr/toastr';
+
+tr.mat-header-row {
+    height: 44px !important;
+    background: #3f51b5;
+}
+.mat-cell, .mat-footer-cell {
+    font-size: 14px !important;
+}
+
+th.mat-header-cell{
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    border-left: 1px solid #a6aab5;
+    color: white;
+}
+.blink {
+    animation: blinker 0.6s linear infinite;
+    color: #b62828;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: sans-serif;
+    }
+    @keyframes blinker {  
+    50% { opacity: 0; }
+    }
+    .blink-one {
+    animation: blinker-one 1s linear infinite;
+    }
+    @keyframes blinker-one {  
+    0% { opacity: 0; }
+    }
+    .blink-two {
+    animation: blinker-two 1.4s linear infinite;
+    }
+    @keyframes blinker-two {  
+    100% { opacity: 0; }
+    }

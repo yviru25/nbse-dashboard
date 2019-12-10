@@ -1,0 +1,11 @@
+<div id="sidebar">
+    <mat-nav-list>
+        <a *ngFor="let menus of sideMenuResponse"  
+            mat-list-item 
+            routerLinkActive
+            [routerLink]="[menus.router]">
+            <mat-icon class="sidenav-icon">{{menus.iconName}}</mat-icon> {{ menus.displayName }}
+        </a>
+       
+    </mat-nav-list>
+</div>

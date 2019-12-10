@@ -1,0 +1,132 @@
+
+<div class="flashMsg" style="text-align: center;">
+    <p class="blink">Student can edit/download their admitcard from Monday, 12th December, 2019.</p>
+</div>
+
+<div class="mat-elevation-z8">
+
+<!-- Student Profile Section -->
+
+<mat-card>
+    <form #stuProfileForm="ngForm"  (ngSubmit)="updateStudentProfile(stuProfileForm)" fxLayout="column" fxLayoutAlign="center">
+      <mat-card-header fxLayoutAlign="center">                
+          <mat-card-subtitle><h2>Student Profile</h2></mat-card-subtitle>
+      </mat-card-header><br><hr>
+      <mat-card-content fxLayout="column" fxLayoutAlign="center">
+          <table cellspacing="0" class="w-100">
+              <tr>
+                  <td>
+                      <mat-form-field class="w-100">
+                          <input matInput placeholder="Student Name" [value]="studProfile.STUDENT_NAME"  name="STUDENT_NAME" #STUDENT_NAME="ngModel" [(ngModel)]="studProfile.STUDENT_NAME" required>
+                      </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="w-100">
+                          <input matInput placeholder="Class" [value]="studProfile.CLASS_ID" name="CLASS_ID" #CLASS_ID="ngModel" [(ngModel)]="studProfile.CLASS_ID" required>
+                      </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="w-100">
+                          <input matInput placeholder="Email Id" [value]="studProfile.EMAIL_ID" name="EMAIL_ID" #EMAIL_ID="ngModel" [(ngModel)]="studProfile.EMAIL_ID" required>
+                      </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field class="w-100">
+                      <input matInput placeholder="Roll No" [disabled]="true" [value]="studProfile.ROLL_NO" name="ROLL_NO" #ROLL_NO="ngModel" [(ngModel)]="studProfile.ROLL_NO" required>
+                    </mat-form-field>
+                  </td>
+              </tr>
+              <tr>
+                <td>
+                    <mat-form-field class="w-100">
+                        <input matInput placeholder="Mobile No" [disabled]="studProfile.MOBILE_NO !== null" [value]="studProfile.MOBILE_NO" name="MOBILE_NO" #MOBILE_NO="ngModel" [(ngModel)]="studProfile.MOBILE_NO" required>
+                    </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="w-100">
+                    <input matInput placeholder="School Code" [value]="studProfile.SCHOOL_ID" name="SCHOOL_ID" #SCHOOL_ID="ngModel" [(ngModel)]="studProfile.SCHOOL_ID" required>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="w-100">
+                     <!-- <input matInput placeholder="DOB" [value]="studProfile.DOB" name="DOB" #DOB="ngModel" [(ngModel)]="studProfile.DOB" required>  -->
+                     <input  placeholder="DOB" [value]="studProfile.DOB" name="DOB" #DOB="ngModel" [(ngModel)]="studProfile.DOB" matInput [matDatepicker]="myPicker" >
+                      <mat-datepicker-toggle  matSuffix [for]="myPicker"></mat-datepicker-toggle>
+                      <mat-datepicker #myPicker></mat-datepicker>
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field class="w-100">
+                     <input matInput placeholder="Father Name" [value]="studProfile.FATHER_NAME" name="FATHER_NAME" #FATHER_NAME="ngModel" [(ngModel)]="studProfile.FATHER_NAME" required> 
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                  <td>
+                      <mat-form-field class="w-100">
+                         <input matInput placeholder="Father Mobile No" [value]="studProfile.FATHER_MOBILE_NO" name="FATHER_MOBILE_NO" #FATHER_MOBILE_NO="ngModel" [(ngModel)]="studProfile.FATHER_MOBILE_NO" required> 
+                      </mat-form-field>
+                    </td>
+                  <td>
+                      <mat-form-field class="w-100">
+                         <input matInput placeholder="Mother Name" [value]="studProfile.MOTHER_NAME" name="MOTHER_NAME" #MOTHER_NAME="ngModel" [(ngModel)]="studProfile.MOTHER_NAME" required> 
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field class="w-100">
+                         <input matInput placeholder="Mother Mobile No" [value]="studProfile.MOTHER_MOBILE_NO" name="MOTHER_MOBILE_NO" #MOTHER_MOBILE_NO="ngModel" [(ngModel)]="studProfile.MOTHER_MOBILE_NO" required> 
+                      </mat-form-field>
+                    </td>
+              </tr>
+          </table>                                  
+      </mat-card-content>
+      <mat-card-actions>
+          <div fxLayoutAlign="end">
+              <button type="submit" mat-raised-button color="primary" class="w-100">Update Profile</button>
+          </div>   
+        </mat-card-actions>
+      </form>
+  </mat-card>
+</div>
+<!-- Student Profile Section -->
+<div class="mat-elevation-z8">
+<table mat-table [dataSource]="studentListDataSource">
+
+    <ng-container matColumnDef="subjectCode">
+      <th mat-header-cell *matHeaderCellDef> Subject Code </th>
+      <td mat-cell *matCellDef="let element"> {{element.subjectCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="SubjectName">
+      <th mat-header-cell *matHeaderCellDef> Subject Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.SubjectName}} </td>
+    </ng-container>
+ 
+ <!--    <ng-container matColumnDef="FEES_PAID">
+      <th mat-header-cell *matHeaderCellDef> Fee Paid</th>
+      <td mat-cell *matCellDef="let element"> {{element.FEES_PAID}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="MARKS_RECEIVED">
+      <th mat-header-cell *matHeaderCellDef> Marks Received</th>
+      <td mat-cell *matCellDef="let element"> {{element.MARKS_RECEIVED}} </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+ </mat-paginator> 
+<ngx-spinner
+bdOpacity = 1
+bdColor = "rgba(4,4,4,0.43)"
+size = "medium"
+color = "#fff"
+type = "square-spin"
+[fullScreen] = "true">
+<h4 style="color: white;font-weight: 700;"> Please Wait... </h4>
+</ngx-spinner>
+<ngx-alerts></ngx-alerts>   
+</div>

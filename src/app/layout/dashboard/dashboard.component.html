@@ -1,0 +1,72 @@
+<div class="flashMsg" style="text-align: center;">
+    <p class="blink">Student can edit/download their admitcard from Monday, 12th December, 2019.</p>
+</div>
+
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+    <div fxFlex>
+        <app-stat [bgClass]="'success'" [icon]="'shopping_cart'" [count]="orderReceivedCount" [countlabel]="'Students / Exams'" [label]="'Total Registration'"></app-stat>
+    </div>
+    <div fxFlex>
+        <app-stat [bgClass]="'warn'" [icon]="'view_list'" [count]="totalRegistered" [countlabel]="'Students / Exams'" [label]="'Registration Done'"></app-stat>
+    </div>
+   <div fxFlex>
+        <app-stat [bgClass]="'danger'" [icon]="'contact_support'" [count]="totalPending" [countlabel]="'Students / Exams'" [label]="'Pending Registration'"></app-stat>
+    </div>
+   <!--   <div fxFlex>
+        <app-stat [bgClass]="'info'" [icon]="'contact_support'" [count]="13" [label]="'New Tickets!'"></app-stat>
+    </div> -->
+</div>
+
+<div flFlex flexLayout="row" flexLayout.lt-md="column" >
+    
+    <table>
+        <colgroup span="4"></colgroup>
+        <thead>
+          <tr>
+            <th scope="col" width="5%">S No</th>
+            <th scope="col" width="17%">Name Of Student</th>
+            <th scope="col" width="5%">Class</th>
+            <th scope="col" width="10%">DOB</th>
+            <th scope="col" width="13%">Mobile No</th>
+            <th colspan="5" scope="colgroup">Subjects</th>
+            <th scope="col" width="5%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of gridData;let i=index" >
+            <td>{{i+1}}</td>
+            <td rowspan="1" scope="rowgroup">{{item.studentName}}</td>
+            <td scope="row">{{item.classId}}</td>
+            <td scope="row">{{item.dob}}</td>
+            <td scope="row">{{item.mobileNumber}}</td>
+           <!--  <td *ngFor="let items of item.subjectName">
+                {{items[]}}
+            </td> -->
+            <td>{{item.subjectName[0]}}</td>
+            <td>{{item.subjectName[1]}}</td>
+            <td>{{item.subjectName[2]}}</td>
+            <td>{{item.subjectName[3]}}</td>
+            <td>{{item.subjectName[4]}}</td>
+            <td>
+              <a href="javascript:void(0)" (click)="confirmDialog(item.studentId)">
+                  <i class="material-icons" style="color:red;">
+                      delete_outline
+                      </i>
+              </a></td>
+          </tr>
+        </tbody>
+      </table>
+<ngx-alerts></ngx-alerts>
+<ngx-spinner
+bdOpacity = 1
+bdColor = "rgba(4,4,4,0.43)"
+size = "medium"
+color = "#fff"
+type = "square-spin"
+[fullScreen] = "true">
+<h4 style="color: white;font-weight: 700;"> Please Wait... </h4>
+</ngx-spinner>
+
+</div>
+
+

@@ -1,0 +1,15 @@
+table {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 500px;
+}
+ 
+th.mat-header-cell {
+    text-align: center;
+    border-left: 1px solid #ccc;
+}
+td.mat-cell{
+    text-align: center;
+    border-left: 1px solid #ccc;
+}

@@ -1,0 +1,69 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="schoolListDataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="SCHOOL_CODE">
+      <th mat-header-cell *matHeaderCellDef> School Code </th>
+      <td mat-cell *matCellDef="let element"> {{element.SCHOOL_CODE}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="SCHOOL_NAME">
+      <th mat-header-cell *matHeaderCellDef> School Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.SCHOOL_NAME}} </td>
+    </ng-container>
+ 
+    <ng-container matColumnDef="SCHOOL_STATE">
+      <th mat-header-cell *matHeaderCellDef> School State </th>
+      <td mat-cell *matCellDef="let element"> {{element.SCHOOL_ADDRESS}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="SCHOOL_CITY">
+      <th mat-header-cell *matHeaderCellDef> School City </th>
+      <td mat-cell *matCellDef="let element"> {{element.SCHOOL_CITY}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="SCHOOL_COORDINATOR">
+      <th mat-header-cell *matHeaderCellDef> School Coordinator </th>
+      <td mat-cell *matCellDef="let element"> {{element.SCHOOL_COORDINATOR}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="SCHOOL_PHONE_NUMBER">
+      <th mat-header-cell *matHeaderCellDef> Coordinator Phone No </th>
+      <td mat-cell *matCellDef="let element"> {{element.SCHOOL_PHONE_NUMBER}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="SCHOOL_PHONE_EMAIL">
+      <th mat-header-cell *matHeaderCellDef> Coordinator Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.SCHOOL_PHONE_EMAIL}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="TOTAL_SCHOOL_COUNT">
+      <th mat-header-cell *matHeaderCellDef> Total School </th>
+      <td mat-cell *matCellDef="let element"> {{element.TOTAL_SCHOOL_COUNT}} </td>
+    </ng-container>
+   
+    <ng-container matColumnDef="TOTAL_SUBJECT_COUNT">
+      <th mat-header-cell *matHeaderCellDef> Total Subject </th>
+      <td mat-cell *matCellDef="let element"> {{element.TOTAL_SUBJECT_COUNT}} </td>
+    </ng-container> 
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+ </mat-paginator>
+
+<ngx-spinner
+bdOpacity = 1
+bdColor = "rgba(4,4,4,0.43)"
+size = "medium"
+color = "#fff"
+type = "square-spin"
+[fullScreen] = "true">
+<h4 style="color: white;font-weight: 700;"> Please Wait... </h4>
+</ngx-spinner>
+
+</div>
