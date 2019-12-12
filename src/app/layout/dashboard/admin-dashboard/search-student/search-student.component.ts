@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AlertService } from 'ngx-alerts';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentProfile } from '../../student-dashboard/student-profile/student-profile.component';
+import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/layout/components/confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -143,6 +144,38 @@ export class SearchStudentComponent implements OnInit {
                 this.spinner.hide();
             });
   }
+
+  confirmDialog(stuId: any): void {
+    const message = `Are you sure you want to delete Student?`;
+
+    const dialogData = new ConfirmDialogModel('Confirm Action', message);
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: '600px',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+        if (dialogResult) {
+            this.deleteStudent(stuId);
+        }
+    });
+  }
+
+deleteStudent(studentId: any) {
+    this.spinner.show();
+    const url = 'deleteStudent?studentId=' + studentId;
+    this.service.getHttpRequest(url).subscribe(res => {
+        this.spinner.hide();
+        if (res.affectedRows === 1) {
+            this.searchStudent(null);
+            this.alertService.success('Student deleted Successfully');
+        } else    {
+            this.alertService.warning('Sorry !!! Student not deleted');
+        }
+    });
+}
+
 
 }
 

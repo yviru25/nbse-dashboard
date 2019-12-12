@@ -114,35 +114,4 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    confirmDialog(stuId: any): void {
-        const message = `Are you sure you want to delete Student?`;
-
-        const dialogData = new ConfirmDialogModel('Confirm Action', message);
-
-        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-          maxWidth: '600px',
-          data: dialogData
-        });
-
-        dialogRef.afterClosed().subscribe(dialogResult => {
-            if (dialogResult) {
-                this.deleteStudent(stuId);
-            }
-        });
-      }
-
-    deleteStudent(studentId: any) {
-        this.spinner.show();
-        const url = 'deleteStudent?studentId=' + studentId;
-        this.service.getHttpRequest(url).subscribe(res => {
-            this.spinner.hide();
-            if (res.affectedRows === 1) {
-                this.getDashboardComponent();
-                this.alertService.success('Student deleted Successfully');
-            } else    {
-                this.alertService.warning('Sorry !!! Student not deleted');
-            }
-        });
-    }
-
 }

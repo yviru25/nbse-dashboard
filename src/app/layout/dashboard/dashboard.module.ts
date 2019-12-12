@@ -31,7 +31,7 @@ import { AlertModule } from 'ngx-alerts';
         AlertModule.forRoot({maxMessages: 5, timeout: 10000, position: 'right'})
     ],
     providers: [],
-    declarations: [DashboardComponent, ConfirmDialogComponent],
-    entryComponents: [ConfirmDialogComponent]
+    declarations: [DashboardComponent],
+    entryComponents: []
 })
 export class DashboardModule {}

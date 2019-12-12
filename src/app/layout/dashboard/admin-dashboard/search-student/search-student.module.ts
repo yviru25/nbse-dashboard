@@ -7,11 +7,11 @@ import { AlertModule } from 'ngx-alerts';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { DialogContentExampleDialog } from './info-dailog/info.dialog.component';
+import { ConfirmDialogComponent } from 'src/app/layout/components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
-  declarations: [SearchStudentComponent, DialogContentExampleDialog],
-  entryComponents: [DialogContentExampleDialog],
+  declarations: [SearchStudentComponent, ConfirmDialogComponent],
+  entryComponents: [ConfirmDialogComponent],
   imports: [
     CommonModule,
     SearchStudentRoutingModule,

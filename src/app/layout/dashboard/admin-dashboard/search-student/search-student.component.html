@@ -48,6 +48,7 @@
                     <th scope="col" width="10%">DOB</th>
                     <th scope="col" width="13%">Father Name</th>
                     <th scope="col" width="10%">Father Mobile No</th>
+                    <th scope="col" width="5%"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -61,6 +62,12 @@
                     <td scope="row">{{item.dob}}</td>
                     <td scope="row">{{item.FATHER_NAME}}</td>
                     <td scope="row">{{item.FATHER_MOBILE_NO}}</td>
+                    <td>
+                      <a href="javascript:void(0)" (click)="confirmDialog(item.studentId)">
+                          <i class="material-icons" style="color:red;">
+                              delete_outline
+                              </i>
+                      </a></td>
                   </tr>
                 </tbody>
               </table>

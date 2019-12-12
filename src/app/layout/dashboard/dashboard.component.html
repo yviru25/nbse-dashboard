@@ -1,5 +1,5 @@
 <div class="flashMsg" style="text-align: center;">
-    <p class="blink">Student can edit/download their admitcard from Monday, 12th December, 2019.</p>
+    <p class="blink">Student can edit/download their admitcard from Monday, 16th December, 2019.</p>
 </div>
 
 <div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
@@ -29,7 +29,6 @@
             <th scope="col" width="10%">DOB</th>
             <th scope="col" width="13%">Mobile No</th>
             <th colspan="5" scope="colgroup">Subjects</th>
-            <th scope="col" width="5%"></th>
           </tr>
         </thead>
         <tbody>
@@ -47,12 +46,6 @@
             <td>{{item.subjectName[2]}}</td>
             <td>{{item.subjectName[3]}}</td>
             <td>{{item.subjectName[4]}}</td>
-            <td>
-              <a href="javascript:void(0)" (click)="confirmDialog(item.studentId)">
-                  <i class="material-icons" style="color:red;">
-                      delete_outline
-                      </i>
-              </a></td>
           </tr>
         </tbody>
       </table>

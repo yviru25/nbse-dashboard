@@ -279,8 +279,6 @@ Apache-2.0
  
 
 
-@angular/material/button
-
 @angular/material/icon
 
 @angular/flex-layout
@@ -512,6 +510,8 @@ THE SOFTWARE.
 
 >>>>>>> Initial commit
 
+
+@angular/material/button
 
 @angular/forms
 MIT
