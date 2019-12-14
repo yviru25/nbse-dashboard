@@ -2,77 +2,13 @@
   <mat-card>
     <form #stuProfileForm="ngForm"  fxLayout="column" fxLayoutAlign="center">
       <mat-card-header fxLayoutAlign="center">                
-          <mat-card-subtitle><h2>Student Profile</h2></mat-card-subtitle>
+          <mat-card-subtitle><h2>Student Admit Card 2019-20</h2></mat-card-subtitle>
       </mat-card-header><br><hr>
       <mat-card-content fxLayout="column" fxLayoutAlign="center">
-          <table cellspacing="0" class="w-100">
-              <tr>
-                  <td>
-                      <mat-form-field class="w-100">
-                          <input matInput placeholder="Student Name" [value]="studProfile.STUDENT_NAME"  name="STUDENT_NAME" #STUDENT_NAME="ngModel" [(ngModel)]="studProfile.STUDENT_NAME" required>
-                      </mat-form-field>
-                  </td>
-                  <td>
-                      <mat-form-field class="w-100">
-                          <input matInput placeholder="Class" [value]="studProfile.CLASS_ID" name="CLASS_ID" #CLASS_ID="ngModel" [(ngModel)]="studProfile.CLASS_ID" required>
-                      </mat-form-field>
-                  </td>
-                  <td>
-                      <mat-form-field class="w-100">
-                          <input matInput placeholder="Email Id" [value]="studProfile.EMAIL_ID" name="EMAIL_ID" #EMAIL_ID="ngModel" [(ngModel)]="studProfile.EMAIL_ID" required>
-                      </mat-form-field>
-                  </td>
-              </tr>
-              <tr>
-                <!-- <td>
-                  <mat-form-field class="w-100">
-                    <input matInput placeholder="Roll No" [value]="studProfile.ROLL_NO" name="ROLL_NO" #ROLL_NO="ngModel" [(ngModel)]="studProfile.ROLL_NO" required>
-                  </mat-form-field>
-                </td> -->
-                <td>
-                    <mat-form-field class="w-100">
-                        <input matInput placeholder="Mobile No" [value]="studProfile.MOBILE_NO" name="MOBILE_NO" #MOBILE_NO="ngModel" [(ngModel)]="studProfile.MOBILE_NO" required>
-                    </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field class="w-100">
-                    <input matInput placeholder="School Code" [value]="studProfile.SCHOOL_ID" name="SCHOOL_ID" #SCHOOL_ID="ngModel" [(ngModel)]="studProfile.SCHOOL_ID" required>
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field class="w-100">
-                     <input matInput placeholder="DOB" [value]="studProfile.DOB" name="DOB" #DOB="ngModel" [(ngModel)]="studProfile.DOB" required> 
-                  </mat-form-field>
-                </td>
-              </tr>
-              <tr>
-                  <td>
-                      <mat-form-field class="w-100">
-                         <input matInput placeholder="Father Name" [value]="studProfile.FATHER_NAME" name="FATHER_NAME" #FATHER_NAME="ngModel" [(ngModel)]="studProfile.FATHER_NAME" required> 
-                      </mat-form-field>
-                    </td>
-                  <td>
-                      <mat-form-field class="w-100">
-                         <input matInput placeholder="Father Mobile No" [value]="studProfile.FATHER_MOBILE_NO" name="FATHER_MOBILE_NO" #FATHER_MOBILE_NO="ngModel" [(ngModel)]="studProfile.FATHER_MOBILE_NO" required> 
-                      </mat-form-field>
-                    </td>
-                  <td>
-                      <mat-form-field class="w-100">
-                         <input matInput placeholder="Mother Name" [value]="studProfile.MOTHER_NAME" name="MOTHER_NAME" #MOTHER_NAME="ngModel" [(ngModel)]="studProfile.MOTHER_NAME" required> 
-                      </mat-form-field>
-                    </td>
-              </tr>
-              <tr>
-                  <td>
-                      <mat-form-field class="w-100">
-                         <input matInput placeholder="Mother Mobile No" [value]="studProfile.MOTHER_MOBILE_NO" name="MOTHER_MOBILE_NO" #MOTHER_MOBILE_NO="ngModel" [(ngModel)]="studProfile.MOTHER_MOBILE_NO" required> 
-                      </mat-form-field>
-                    </td>
-              </tr>
-          </table>                            
-         <!--  <div fxLayoutAlign="center">
-              <button type="submit" mat-raised-button color="primary" class="w-100">Update Profile</button>
-          </div>   -->               
+                        
+         <div fxLayoutAlign="center">
+              <a href="{{downloadURL}}" target="_blank" mat-raised-button color="primary" class="w-100">Download Admit Card</a>
+          </div>          
       </mat-card-content>
       <mat-card-actions>
          

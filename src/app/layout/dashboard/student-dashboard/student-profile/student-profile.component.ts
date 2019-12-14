@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-student-profile',
@@ -10,17 +11,16 @@ export class StudentProfileComponent implements OnInit {
   sessionStorage: any;
   public studProfile: StudentProfile;
   stuName = 'abc';
+  private baseURL = environment.baseURL2;
+  public downloadURL = '';
   constructor() { }
 
   ngOnInit() {
       this.studProfile = JSON.parse(localStorage.getItem('loggedIn'));
       this.studProfile = this.studProfile[0];
-
+      this.downloadURL = this.baseURL + '/' + 'downloadAdmitCard/' + this.studProfile.ROLL_NO;
   }
 
-  updateProfile() {
-
-  }
 
 }
 

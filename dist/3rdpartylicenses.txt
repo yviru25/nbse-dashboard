@@ -521,8 +521,6 @@ MIT
 
 @angular/material/tooltip
 
-@angular/material/form-field
-
 ngx-alerts
 MIT
 The MIT License
@@ -550,11 +548,13 @@ THE SOFTWARE.
 
 @angular/material/card
 
-@angular/material/dialog
-
 @angular/material/select
 
 @angular/material/core
+
+@angular/material/form-field
+
+@angular/material/dialog
 
 @angular/material/snack-bar
 

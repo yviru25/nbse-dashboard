@@ -33,7 +33,7 @@ const routes: Routes = [
                 loadChildren: './dashboard/student-dashboard/student-dashboard.module#StudentDashboardModule'
             },
             {
-                path: 'student-profile',
+                path: 'student-admitcard',
                 loadChildren: './dashboard/student-dashboard/student-profile/student-profile.module#StudentProfileModule'
             }
         ]

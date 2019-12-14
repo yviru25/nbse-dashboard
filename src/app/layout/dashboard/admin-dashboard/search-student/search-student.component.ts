@@ -6,6 +6,7 @@ import { AlertService } from 'ngx-alerts';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentProfile } from '../../student-dashboard/student-profile/student-profile.component';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/layout/components/confirm-dialog/confirm-dialog.component';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -19,11 +20,14 @@ export class SearchStudentComponent implements OnInit {
   public searchStudentModel = new SearchStudentModel();
   public respList = [];
   public subjectList = [];
+  public studentList = [];
   public studentBasicInfo: any;
   public studProfile: StudentProfile;
   public subjectModel: SubjectModel;
   public subjectListMappingList = [];
   public studentEdit = false;
+  private baseURL = environment.baseURL2;
+  public downloadURL = this.baseURL + '/' + 'downloadAdmitCard';
   constructor(private service: SharedServices,
               private spinner: NgxSpinnerService,
               private alertService: AlertService,
@@ -48,7 +52,23 @@ export class SearchStudentComponent implements OnInit {
     this.service.getHttpRequest(url)
         .subscribe(res => {
             this.respList = res;
-            if (this.respList.length <= 0) {
+            this.studentList = [];
+            if (this.respList.length > 0) {
+              for (let i = 0; i < this.respList.length; i++) {
+                const jsonModified = {
+                    studentId: this.respList[i].studentId,
+                    ROLL_NO: this.respList[i].ROLL_NO,
+                    studentName: this.respList[i].studentName,
+                    class: this.respList[i].class,
+                    dob  : this.respList[i].dob,
+                    FATHER_NAME: this.respList[i].FATHER_NAME,
+                    FATHER_MOBILE_NO: this.respList[i].FATHER_MOBILE_NO,
+                    downloadAdmitCard: this.downloadURL + '/' + this.respList[i].ROLL_NO,
+
+                };
+                this.studentList.push(jsonModified);
+            }
+            } else {
               this.alertService.warning('No Record Found');
             }
             // console.log(this.respList.length);

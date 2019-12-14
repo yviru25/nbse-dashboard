@@ -49,10 +49,11 @@
                     <th scope="col" width="13%">Father Name</th>
                     <th scope="col" width="10%">Father Mobile No</th>
                     <th scope="col" width="5%"></th>
+                    <th scope="col" width="5%"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of respList;let i=index" >
+                  <tr *ngFor="let item of studentList;let i=index" >
                     <td>{{i+1}}</td>
                     <td rowspan="1" scope="rowgroup" (click)="getStudentDetailByStudentId(item.studentId)" >
                      <a href="javascript:void(0)">{{item.studentId}}</a></td>
@@ -67,6 +68,12 @@
                           <i class="material-icons" style="color:red;">
                               delete_outline
                               </i>
+                      </a></td>
+                      <td>
+                      <a [href]="item.downloadAdmitCard" target="_blank">
+                            <i class="material-icons">
+                              cloud_download
+                            </i>
                       </a></td>
                   </tr>
                 </tbody>

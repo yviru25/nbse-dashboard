@@ -75,13 +75,13 @@ export class SidebarComponent implements OnInit {
                 },
                 {
                     'displayName': 'Download Admit Card',
-                    'router': 'downloadAdmitCard',
-                    'iconName': 'person_add'
+                    'router': '/student-admitcard',
+                    'iconName': 'cloud_download'
                 },
                 {
                     'displayName': 'Download Marksheet',
                     'router': 'downloadMarkSheet',
-                    'iconName': 'person_add_disabled'
+                    'iconName': 'cloud_download'
                 },
                 {
                     'displayName': 'Re-Verification',
