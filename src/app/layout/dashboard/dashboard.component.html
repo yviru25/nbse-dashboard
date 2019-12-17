@@ -24,6 +24,7 @@
         <thead>
           <tr>
             <th scope="col" width="5%">S No</th>
+            <th scope="col" width="10%">Roll No</th>
             <th scope="col" width="17%">Name Of Student</th>
             <th scope="col" width="5%">Class</th>
             <th scope="col" width="10%">DOB</th>
@@ -34,6 +35,7 @@
         <tbody>
           <tr *ngFor="let item of gridData;let i=index" >
             <td>{{i+1}}</td>
+            <td>{{item.rollNo}}</td>
             <td rowspan="1" scope="rowgroup">{{item.studentName}}</td>
             <td scope="row">{{item.classId}}</td>
             <td scope="row">{{item.dob}}</td>

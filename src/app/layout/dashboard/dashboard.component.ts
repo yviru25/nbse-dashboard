@@ -56,12 +56,12 @@ export class DashboardComponent implements OnInit {
         const arjs = [];
         this.gridData = [];
         this.spinner.show();
-        const url = 'getRegisteredStudentsBySchool?schoolCode=' + this.schoolCode;
+        const url = 'getRegisteredStudentsBySchool?schoolCode=' + Number(this.schoolCode).toString();
         this.service.getHttpRequest(url)
             .subscribe(res => {
                 this.spinner.hide();
                 const elementId = [];
-
+                console.log(res);
                 const newArr = res.filter(el => {
                     if (elementId.indexOf(el.studentId) === -1) {
                         // If not present in array, then add it
@@ -84,6 +84,7 @@ export class DashboardComponent implements OnInit {
                         {
                             studentId: d.studentId,
                             studentName: d.studentName,
+                            rollNo: d.rollNo,
                             classId: d.class,
                             mobileNumber: d.mobileNumber,
                             dob: d.dob,
@@ -103,6 +104,7 @@ export class DashboardComponent implements OnInit {
                      const d = {
                         studentId: newArr[i].studentId,
                         studentName: newArr[i].studentName,
+                        rollNo: newArr[i].rollNo,
                         classId: newArr[i].class,
                         mobileNumber: newArr[i].mobileNumber,
                         dob: newArr[i].dob,
