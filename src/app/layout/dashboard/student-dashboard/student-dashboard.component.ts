@@ -1,13 +1,22 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SharedServices } from '../../../shared/services/SharedServices';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AlertService } from 'ngx-alerts';
+import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/shared/pipes/app.date.format';
 
 @Component({
   selector: 'app-student-dashboard',
   templateUrl: './student-dashboard.component.html',
-  styleUrls: ['./student-dashboard.component.scss']
+  styleUrls: ['./student-dashboard.component.scss'],
+  providers: [
+    {
+      provide: DateAdapter, useClass: AppDateAdapter
+  },
+  {
+      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS
+  }
+  ]
 })
 export class StudentDashboardComponent implements OnInit {
   sessionStorage: any;

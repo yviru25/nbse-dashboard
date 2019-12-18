@@ -1,3 +1,4 @@
+import { AppDateAdapter, APP_DATE_FORMATS } from './../../../../shared/pipes/app.date.format';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchStudentComponent } from './search-student.component';
@@ -20,6 +21,8 @@ import { ConfirmDialogComponent } from 'src/app/layout/components/confirm-dialog
     FlexLayoutModule,
     NgxSpinnerModule,
     AlertModule.forRoot({maxMessages: 5, timeout: 10000, position: 'right'})
-  ]
+  ],
+  providers: [
+    ]
 })
 export class SearchStudentModule { }

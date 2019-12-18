@@ -7,13 +7,22 @@ import { MatDialog } from '@angular/material/dialog';
 import { StudentProfile } from '../../student-dashboard/student-profile/student-profile.component';
 import { ConfirmDialogModel, ConfirmDialogComponent } from 'src/app/layout/components/confirm-dialog/confirm-dialog.component';
 import { environment } from 'src/environments/environment';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
+import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/shared/pipes/app.date.format';
 
 
 @Component({
   selector: 'app-search-student',
   templateUrl: './search-student.component.html',
   styleUrls: ['./search-student.component.scss'],
-  providers: [SharedServices, NgxSpinnerService]
+  providers: [SharedServices, NgxSpinnerService,
+    {
+      provide: DateAdapter, useClass: AppDateAdapter
+  },
+  {
+      provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS
+  }
+  ]
 })
 export class SearchStudentComponent implements OnInit {
   @ViewChild('searchStudentForm') formValues;
