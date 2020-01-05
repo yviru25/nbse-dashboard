@@ -106,7 +106,7 @@
    </a> 
     <form #stuProfileForm="ngForm" (ngSubmit)="updateStudentProfile(stuProfileForm)"   fxLayout="column" fxLayoutAlign="center">
       <mat-card-header fxLayoutAlign="center">                
-          <mat-card-subtitle><h2>Student Information Details</h2></mat-card-subtitle>
+          <mat-card-subtitle><h3>Student Information Details</h3></mat-card-subtitle>
       </mat-card-header><br>
       <mat-card-content fxLayout="column" fxLayoutAlign="center">
           <table cellspacing="0" class="w-100">
@@ -181,9 +181,51 @@
           </div> 
         </mat-card-actions>
       </form>
+
+<div class="container">
+      <mat-card>
+        <mat-card-header fxLayoutAlign="center">                
+            <mat-card-subtitle><h3>Add Student Marks</h3></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <form #studentAbsentModelForm="ngForm" (ngSubmit)="updateStudentAbsent()"   fxLayout="column" fxLayoutAlign="center">
+          
+              <table cellspacing="0" class="w-100">
+                  <tr>
+                      <td>
+                          <mat-form-field class="w-100">
+                              <mat-select placeholder="Select Subject" name="subject" #stubjectId="ngModel" [(ngModel)]="studentAbsentModel.stubjectId" required >
+                                  <mat-option *ngFor="let subjcts of subjectMapping" [value]="subjcts.subject_id" >{{subjcts.subjectName}}</mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                      </td>
+                      <td>
+                          <mat-form-field class="w-100">
+                              <mat-select placeholder="Select Attendance" name="attendance" #attendanceType="ngModel" [(ngModel)]="studentAbsentModel.attendanceType" required >
+                                  <mat-option [value]="-1" >Absent</mat-option>
+                                  <mat-option [value]="1" >Present</mat-option>
+                              </mat-select>
+                          </mat-form-field>
+                      </td>
+                      <td>
+                          <mat-form-field class="w-100" *ngIf="studentAbsentModel.attendanceType == '1'" >
+                              <input matInput placeholder="Enter Marks" name="marks" #marks="ngModel" [(ngModel)]="studentAbsentModel.marks">
+                          </mat-form-field>
+                      </td>
+                      <td>
+                          <button type="submit" mat-raised-button color="primary" [disabled]="!studentAbsentModelForm.valid" class="w-100">Submit</button>
+                      </td> 
+                  </tr>
+              </table>
+          </form>
+        </mat-card-content>
+    </mat-card>
+  </div>
+
+<div class="container">
         <mat-card>
             <mat-card-header fxLayoutAlign="center">                
-                <mat-card-subtitle><h2>Student Subject Details</h2></mat-card-subtitle>
+                <mat-card-subtitle><h3>Student Subject Details</h3></mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <mat-nav-list>
@@ -199,6 +241,4 @@
                 </mat-nav-list>
             </mat-card-content>
         </mat-card>
-
-  </mat-card>
 </div>

@@ -26,7 +26,9 @@ import { AppDateAdapter, APP_DATE_FORMATS } from 'src/app/shared/pipes/app.date.
 })
 export class SearchStudentComponent implements OnInit {
   @ViewChild('searchStudentForm') formValues;
+  @ViewChild('studentAbsentModelForm') stuAbsentformValues;
   public searchStudentModel = new SearchStudentModel();
+  public studentAbsentModel = new StudentAbsentModel();
   public respList = [];
   public subjectList = [];
   public studentList = [];
@@ -37,6 +39,8 @@ export class SearchStudentComponent implements OnInit {
   public studentEdit = false;
   private baseURL = environment.baseURL2;
   public downloadURL = this.baseURL + '/' + 'downloadAdmitCard';
+  public subjectMapping = [];
+  public studentIdForAbsent = '';
   constructor(private service: SharedServices,
               private spinner: NgxSpinnerService,
               private alertService: AlertService,
@@ -44,6 +48,9 @@ export class SearchStudentComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
+
 
 
   /* openDialog(studId: any) {
@@ -89,6 +96,7 @@ export class SearchStudentComponent implements OnInit {
     this.spinner.show();
     this.studProfile = null;
     this.subjectListMappingList = [];
+    this.studentIdForAbsent = studid;
     const url = 'getStudentCompleteProfile?studentId=' + studid;
     this.service.getHttpRequest(url)
         .subscribe(res => {
@@ -109,6 +117,13 @@ export class SearchStudentComponent implements OnInit {
                    iconName: this.subjectList[i].registrationStatus === '1' ? 'delete_forever' : 'add_circle_outline',
                    actionType: this.subjectList[i].registrationStatus === '1' ? 'D' : 'A'
                 };
+                if (this.subjectList[i].registrationStatus === '1') {
+                  const subIdMapping = {
+                    subject_id: this.subjectList[i].subject_id,
+                     subjectName: subjectName,
+                  };
+                  this.subjectMapping.push(subIdMapping);
+                }
                 this.subjectListMappingList.push(subjectListMapping);
             }
             this.spinner.hide();
@@ -174,6 +189,30 @@ export class SearchStudentComponent implements OnInit {
             });
   }
 
+  updateStudentAbsent() {
+      console.log(this.studentAbsentModel);
+     this.spinner.show();
+     let studentMarks = '';
+     if (Number(this.studentAbsentModel.attendanceType) === -1) {
+      studentMarks = '-1';
+     } else {
+      studentMarks = this.studentAbsentModel.marks;
+     }
+    const url = 'publishMarksAdmin?subjectCode='  + this.studentAbsentModel.stubjectId +
+                '&studentId=' + this.studentIdForAbsent + '&mark=' + studentMarks;
+    console.log(url);
+     this.service.getHttpRequest(url)
+        .subscribe(res => {
+          if (res.affectedRows === 1) {
+            this.stuAbsentformValues.resetForm();
+            this.alertService.success('Marks successfully Updated');
+          } else {
+            this.alertService.danger('Sorry ! Something went wrong');
+          }
+          this.spinner.hide();
+        });
+  }
+
   confirmDialog(stuId: any): void {
     const message = `Are you sure you want to delete Student?`;
 
@@ -219,4 +258,11 @@ export class SubjectModel {
   studentId: string;
   studentSubjectId: string;
   registrationStatus: string;
+}
+
+export class StudentAbsentModel {
+  stubjectId: string;
+  studentId: string;
+  attendanceType: string;
+  marks: string;
 }
