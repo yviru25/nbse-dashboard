@@ -100,6 +100,7 @@ export class SearchStudentComponent implements OnInit {
     const url = 'getStudentCompleteProfile?studentId=' + studid;
     this.service.getHttpRequest(url)
         .subscribe(res => {
+          this.subjectMapping = [];
             this.studentEdit = true;
             this.studProfile = res[0];
             const str = res[0].DOB.split('/');
