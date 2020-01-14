@@ -18,8 +18,54 @@
 </div>
 
 <div flFlex flexLayout="row" flexLayout.lt-md="column" >
-    
-    <table>
+  
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" width="5%">S No</th>
+        <th scope="col" width="10%">Roll No</th>
+        <th scope="col" width="17%">Name Of Student</th>
+        <th scope="col" width="5%">Class</th>
+        <th scope="col" width="10%">DOB</th>  
+        <th scope="col" width="13%">Mobile No</th>
+        <th scope="col" width="20%">Subject & Marks</th>
+      </tr>
+     
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let item of gridData;let i=index" class="parent">
+            <td>{{i+1}}</td>
+            <td>{{item.rollNo}}</td>
+            <td rowspan="1" scope="rowgroup">{{item.studentName}}</td>
+            <td scope="row">{{item.classId}}</td>
+            <td scope="row">{{item.dob}}</td>
+            <td scope="row">{{item.mobileNumber}}</td>
+            <td><i class="material-icons" id="arrow-dwn{{i}}" (click)="showMore(this,i)" >keyboard_arrow_down</i> 
+            <tr *ngIf="selectedIndex == i">
+                  <table>
+                    <tr>
+                      <td style="width: 180px;background: cornsilk;">Subject</td>
+                      <td style="width: 90px;background: cornsilk;">Marks</td>
+                    </tr>
+                    <tbody>
+                      <tr *ngFor="let items of item.subjectName" >
+                          <td>{{items.subjectName}}</td>
+                          <td>{{items.subjectMarks}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </tr>  
+            </td>
+          </tr>     
+               
+    </tbody>
+</table>
+
+
+
+   <!--  <table>
         <colgroup span="4"></colgroup>
         <thead>
           <tr>
@@ -31,6 +77,7 @@
             <th scope="col" width="13%">Mobile No</th>
             <th colspan="5" scope="colgroup">Subjects</th>
           </tr>
+         
         </thead>
         <tbody>
           <tr *ngFor="let item of gridData;let i=index" >
@@ -40,17 +87,18 @@
             <td scope="row">{{item.classId}}</td>
             <td scope="row">{{item.dob}}</td>
             <td scope="row">{{item.mobileNumber}}</td>
-           <!--  <td *ngFor="let items of item.subjectName">
-                {{items[]}}
-            </td> -->
-            <td>{{item.subjectName[0]}}</td>
-            <td>{{item.subjectName[1]}}</td>
-            <td>{{item.subjectName[2]}}</td>
-            <td>{{item.subjectName[3]}}</td>
-            <td>{{item.subjectName[4]}}</td>
-          </tr>
+            <td><button (click)="item.visible = !item.visible">{{ item.visible ? 'Show less': 'Show More' }}</button></td>
+            <td [class.show]="item.visible">
+              <div *ngFor="let items of [1,2,3,4,5]">
+                <div class="container" >
+                  {{items}}
+                </div>
+              </div>
+            </td>
+            
+          </tr> 
         </tbody>
-      </table>
+      </table> -->
 <ngx-alerts></ngx-alerts>
 <ngx-spinner
 bdOpacity = 1

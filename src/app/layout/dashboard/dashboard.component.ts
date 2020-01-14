@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material';
 import { ConfirmDialogModel, ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 import { AlertService } from 'ngx-alerts';
 
+declare var jQuery;
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
@@ -24,6 +25,7 @@ export class DashboardComponent implements OnInit {
     public totalPending: string;
     public schoolCode: string;
     public subscription: Subscription;
+    public selectedIndex = -1;
     constructor(private service: SharedServices,
                 private spinner: NgxSpinnerService,
                 public dialog: MatDialog,
@@ -45,9 +47,15 @@ export class DashboardComponent implements OnInit {
             this.getDashboardComponent();
 
 
+            /* jQuery('table').on('click', 'tr.parent .arrow-dwn', function() {
+                jQuery(this).closest('tbody').toggleClass('open');
+              }); */
 
     }
 
+    showMore(event, index) {
+        this.selectedIndex = index;
+    }
 
     public getDashboardComponent() {
         const arr = [];
@@ -88,6 +96,7 @@ export class DashboardComponent implements OnInit {
                             classId: d.class,
                             mobileNumber: d.mobileNumber,
                             dob: d.dob,
+                            marks: d.MARKS_RECEIVED,
                             subjectName: d.subjectName
                         }
                     );
@@ -99,7 +108,20 @@ export class DashboardComponent implements OnInit {
                      subJs = [];
                      const jsonArr = groupByName[newArr[i].studentId];
                      for (let s = 0; s < jsonArr.length; s++) {
-                        subJs.push(jsonArr[s].subjectName);
+                        let marks = '';
+                        if (jsonArr[s].marks === null) {
+                            marks = 'In-Progress';
+                        } else if (jsonArr[s].marks === -1) {
+                            marks = 'Absent';
+                        } else {
+                            marks = jsonArr[s].marks;
+                        }
+
+                         const subMarks = {
+                              subjectName: jsonArr[s].subjectName,
+                              subjectMarks: marks
+                         };
+                        subJs.push(subMarks);
                      }
                      const d = {
                         studentId: newArr[i].studentId,
@@ -108,7 +130,8 @@ export class DashboardComponent implements OnInit {
                         classId: newArr[i].class,
                         mobileNumber: newArr[i].mobileNumber,
                         dob: newArr[i].dob,
-                        subjectName: subJs
+                        subjectName: subJs,
+                        visible: false
                     };
                     this.gridData.push(d);
                 }

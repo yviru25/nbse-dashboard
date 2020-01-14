@@ -39,3 +39,45 @@ td {
     text-align: center; /* Center our text */
 }
 
+
+
+
+
+
+
+
+
+
+.parent ~ .cchild {
+    display: none;
+  }
+  .open .parent ~ .cchild {
+    display: table-row;
+  }
+  .parent {
+    cursor: pointer;
+  }
+  tbody {
+    color: #212121;
+  }
+  .open {
+    background-color: #e6e6e6;
+  }
+  
+  .open .cchild {
+    background-color: #999;
+    color: white;
+  }
+  .parent > *:last-child {
+    width: 30px;
+  }
+  .parent i {
+    transform: rotate(0deg);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+    margin: -.5rem;
+    padding: .5rem;
+   
+  }
+  .open .parent i {
+    transform: rotate(180deg)
+  }
