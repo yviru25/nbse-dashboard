@@ -64,7 +64,14 @@ export class DashboardComponent implements OnInit {
         const arjs = [];
         this.gridData = [];
         this.spinner.show();
-        const url = 'getRegisteredStudentsBySchool?schoolCode=' + Number(this.schoolCode).toString();
+        let scholCode = '';
+        // tslint:disable-next-line:max-line-length
+        if (this.schoolCode === '01380') {
+            scholCode = this.schoolCode;
+        } else {
+            scholCode = Number(this.schoolCode).toString();
+        }
+        const url = 'getRegisteredStudentsBySchool?schoolCode=' + scholCode;
         this.service.getHttpRequest(url)
             .subscribe(res => {
                 this.spinner.hide();
