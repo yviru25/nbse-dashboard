@@ -1,0 +1,85 @@
+<div fxLayout="column" class="p-2" *ngIf="!studentEdit">
+
+  <div class="p-2">
+      <mat-card>
+        <form #searchStudentForm="ngForm" (ngSubmit)="searchStudentForm.form.valid && searchStudent(searchStudentForm)"  fxLayout="column" fxLayoutAlign="center">
+          <mat-card-header fxLayoutAlign="center">                
+              <mat-card-subtitle><h2>View Student Results</h2></mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content fxLayout="column" fxLayoutAlign="center">                         
+              <table cellspacing="0" class="w-100">
+                  <tr>
+                      <td>
+                          <mat-form-field class="w-100">
+                              <input matInput placeholder="School Code" name="schoolCode" #schoolCode="ngModel" [(ngModel)]="searchStudentModel.schoolCode" required>
+                          </mat-form-field>
+                      </td>
+                      <td>
+                          <mat-form-field class="w-100">
+                              <mat-select placeholder="Select Class" name="class" #class="ngModel" [(ngModel)]="searchStudentModel.class" required >
+                                <mat-option [value]="9" >9</mat-option>
+                                <mat-option [value]="10" >10</mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-card-actions>
+                          <button type="submit" [disabled]="!searchStudentForm.form.valid" mat-raised-button color="primary" class="w-100">Search</button>
+                        </mat-card-actions>
+                      </td>
+                  </tr>
+              </table>           
+          </mat-card-content>
+          </form>
+
+          <!-- Student List Table Data -->
+
+          <div flFlex flexLayout="row" flexLayout.lt-md="column" *ngIf="respList.length > 0"  >
+            
+            <table class="flatTable">
+                <colgroup span="4"></colgroup>
+                <thead>
+                  <tr>
+                    <th scope="col" width="5%">S No</th>
+                    <th scope="col" width="5%">Roll No</th>
+                    <th scope="col" width="5%">Class</th>
+                    <th scope="col" width="10%">Subject ID</th>
+                    <th scope="col" width="13%">Subject Name</th>
+                    <th scope="col" width="10%">Marks</th>
+                    <th scope="col" width="5%"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of studentList;let i=index" >
+                    <td>{{i+1}}</td>
+                    <td scope="row" >{{item.rollNo}}</td>
+                    <td scope="row">{{item.class_id}}</td>
+                    <td scope="row">{{item.subject_id}}</td>
+                    <td scope="row">{{item.subjectName}}</td>
+                    <td scope="row">{{item.marks_received == null?'In-Progress':item.marks_received==-1?'Absent':item.marks_received}}</td>
+                    <td>
+                      <a href="javascript:void(0)" (click)="getStudentDetailByStudentId(item.studentId)">
+                          <i class="material-icons">
+                           edit
+                          </i>
+                      </a></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </mat-card>
+  </div>
+</div>
+
+
+
+<ngx-alerts></ngx-alerts>    
+<ngx-spinner
+  bdOpacity = 1
+  bdColor = "rgba(4,4,4,0.43)"
+  size = "medium"
+  color = "#fff"
+  type = "square-spin"
+  [fullScreen] = "true">
+  <h4 style="color: white;font-weight: 700;"> Please Wait... </h4>
+</ngx-spinner>

@@ -23,7 +23,7 @@ export class StudentDashboardComponent implements OnInit {
   public studProfile: StudentProfile;
   public dateOfBirth: any;
   public studentListDataSource = new MatTableDataSource<studentDataList>();
-    public displayedColumns: string[] = ['subjectCode', 'SubjectName'];
+    public displayedColumns: string[] = ['subjectCode', 'SubjectName', 'MARKS_RECEIVED'];
     @ViewChild(MatPaginator) paginator: MatPaginator;
     constructor(private service: SharedServices, private spinner: NgxSpinnerService, private alertService: AlertService) {
 

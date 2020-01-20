@@ -29,6 +29,10 @@ const routes: Routes = [
                 loadChildren: './dashboard/admin-dashboard/search-student/search-student.module#SearchStudentModule'
             },
             {
+                path: 'view-result',
+                loadChildren: './dashboard/admin-dashboard/view-result/view-result.module#ViewResultModule'
+            },
+            {
                 path: 'student-dashboard',
                 loadChildren: './dashboard/student-dashboard/student-dashboard.module#StudentDashboardModule'
             },

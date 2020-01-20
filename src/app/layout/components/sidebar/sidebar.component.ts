@@ -51,6 +51,11 @@ export class SidebarComponent implements OnInit {
                     'iconName': 'search'
                 },
                 {
+                    'displayName': 'View Result',
+                    'router': '/view-result',
+                    'iconName': 'view_list'
+                },
+                {
                     'displayName': 'Download Marksheet',
                     'router': 'download-marksheet',
                     'iconName': 'cloud_download'
