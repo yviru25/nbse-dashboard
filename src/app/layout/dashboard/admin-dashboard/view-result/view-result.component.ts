@@ -4,6 +4,7 @@ import { StudentProfile } from '../../student-dashboard/student-profile/student-
 import { SharedServices } from 'src/app/shared/services/SharedServices';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AlertService } from 'ngx-alerts';
+import { subectNameList } from '../../../../shared/services/shared-data';
 
 @Component({
   selector: 'app-view-result',
@@ -25,6 +26,8 @@ export class ViewResultComponent implements OnInit {
   public subjectModel: SubjectModel;
   public subjectListMappingList = [];
   public studentEdit = false;
+  public subjectMapping = [];
+  public studentIdForAbsent = '';
 
   constructor(private service: SharedServices,
     private spinner: NgxSpinnerService,
@@ -63,8 +66,83 @@ export class ViewResultComponent implements OnInit {
         });
   }
 
-  getStudentDetailByStudentId(studentId) {
-     this.alertService.warning('Edit functionality will be available soon');
+
+  handleBack() {
+    this.studentEdit = false;
   }
+
+
+  getStudentDetailByStudentId(studid: any) {
+    this.spinner.show();
+    this.studProfile = null;
+    this.subjectListMappingList = [];
+    this.studentIdForAbsent = studid;
+    const url = 'getStudentCompleteProfile?studentId=' + studid;
+    this.service.getHttpRequest(url)
+        .subscribe(res => {
+          this.subjectMapping = [];
+            this.studentEdit = true;
+            this.studProfile = res[0];
+            const str = res[0].DOB.split('/');
+            const dob = str[1] + '/' + str[0] + '/' + str[2];
+            this.studProfile.DOB = new Date(dob);
+            this.subjectList = res.slice(1);
+            for (let i = 0; i < this.subjectList.length; i++) {
+                const subjectName = this.getSubjectName(this.subjectList[i].subject_id);
+                const subjectListMapping = {
+                   subject_id: this.subjectList[i].subject_id,
+                   subjectName: subjectName,
+                   studentId: studid,
+                   studentSubjectId: this.subjectList[i].studentSubjectId,
+                   registrationStatus: this.subjectList[i].registrationStatus,
+                   iconName: this.subjectList[i].registrationStatus === '1' ? 'delete_forever' : 'add_circle_outline',
+                   actionType: this.subjectList[i].registrationStatus === '1' ? 'D' : 'A'
+                };
+                if (this.subjectList[i].registrationStatus === '1') {
+                  const subIdMapping = {
+                    subject_id: this.subjectList[i].subject_id,
+                     subjectName: subjectName,
+                  };
+                  this.subjectMapping.push(subIdMapping);
+                }
+                this.subjectListMappingList.push(subjectListMapping);
+            }
+            this.spinner.hide();
+        });
+  }
+
+  getSubjectName(subjectId: any): string {
+    let subjectName: string;
+    for (let s = 0; s < subectNameList.length; s++) {
+       if (subectNameList[s].id === subjectId) {
+          subjectName = subectNameList[s].name;
+       }
+    }
+    return subjectName;
+  }
+
+  updateStudentAbsent() {
+    console.log(this.studentAbsentModel);
+   this.spinner.show();
+   let studentMarks = '';
+   if (Number(this.studentAbsentModel.attendanceType) === -1) {
+    studentMarks = '-1';
+   } else {
+    studentMarks = this.studentAbsentModel.marks;
+   }
+  const url = 'publishMarksAdmin?subjectCode='  + this.studentAbsentModel.stubjectId +
+              '&studentId=' + this.studentIdForAbsent + '&mark=' + studentMarks;
+  // console.log(url);
+   this.service.getHttpRequest(url)
+      .subscribe(res => {
+        if (res.affectedRows === 1) {
+          this.stuAbsentformValues.resetForm();
+          this.alertService.success('Marks successfully Updated');
+        } else {
+          this.alertService.danger('Sorry ! Something went wrong');
+        }
+        this.spinner.hide();
+      });
+}
 
 }

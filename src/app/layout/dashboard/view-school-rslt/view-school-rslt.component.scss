@@ -1,0 +1,31 @@
+.mat-form-field {
+    display: inline; 
+   position: relative;
+   text-align: left;
+}
+.mat-card-actions{
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+
+.flatTable {  
+    color: #333; /* Lighten up font color */
+    width: 100%; 
+    border-collapse: collapse; 
+    border-spacing: 0; 
+}
+
+.flatTable td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+
+.flatTable th {  
+    background: rgb(16, 132, 209); /* Light grey background */
+    font-weight: bold; /* Make sure they're bold */
+    color: white;
+}
+
+.flatTable td {  
+    background: #FAFAFA; /* Lighter grey background */
+    text-align: center; /* Center our text */
+}

@@ -107,6 +107,11 @@ export class SidebarComponent implements OnInit {
                     'iconName': 'dashboard'
                 },
                 {
+                    'displayName': 'View Result',
+                    'router': '/view-school-result',
+                    'iconName': 'view_list'
+                },
+                {
                     'displayName': 'Order Recieved',
                     'router': 'downloadAdmitCard',
                     'iconName': 'store'
