@@ -127,12 +127,14 @@ export class ViewResultComponent implements OnInit {
    let studentMarks = '';
    if (Number(this.studentAbsentModel.attendanceType) === -1) {
     studentMarks = '-1';
+   } else if (Number(this.studentAbsentModel.attendanceType) === 0) {
+    studentMarks = 'null';
    } else {
     studentMarks = this.studentAbsentModel.marks;
    }
   const url = 'publishMarksAdmin?subjectCode='  + this.studentAbsentModel.stubjectId +
               '&studentId=' + this.studentIdForAbsent + '&mark=' + studentMarks;
-  // console.log(url);
+   console.log(url);
    this.service.getHttpRequest(url)
       .subscribe(res => {
         if (res.affectedRows === 1) {

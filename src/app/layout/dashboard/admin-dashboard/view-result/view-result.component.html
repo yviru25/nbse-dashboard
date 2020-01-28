@@ -100,6 +100,7 @@
                           <mat-select placeholder="Select Attendance" name="attendance" #attendanceType="ngModel" [(ngModel)]="studentAbsentModel.attendanceType" required >
                               <mat-option [value]="-1" >Absent</mat-option>
                               <mat-option [value]="1" >Present</mat-option>
+                              <mat-option [value]="0">In-Progress</mat-option>
                           </mat-select>
                       </mat-form-field>
                   </td>

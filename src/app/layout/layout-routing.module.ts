@@ -33,6 +33,10 @@ const routes: Routes = [
                 loadChildren: './dashboard/admin-dashboard/view-result/view-result.module#ViewResultModule'
             },
             {
+                path: 'evaluator-result',
+                loadChildren: './dashboard/admin-dashboard/evaluator-result/evaluator-result.module#EvaluatorResultModule'
+            },
+            {
                 path: 'view-school-result',
                 loadChildren: './dashboard/view-school-rslt/view-school-rslt.module#ViewSchoolRsltModule'
             },
