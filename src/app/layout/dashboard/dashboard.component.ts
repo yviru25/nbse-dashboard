@@ -66,7 +66,7 @@ export class DashboardComponent implements OnInit {
         this.spinner.show();
         let scholCode = '';
         // tslint:disable-next-line:max-line-length
-        if (this.schoolCode === '01380') {
+        if (this.schoolCode === '01380' || this.schoolCode === '00707') {
             scholCode = this.schoolCode;
         } else {
             scholCode = Number(this.schoolCode).toString();
