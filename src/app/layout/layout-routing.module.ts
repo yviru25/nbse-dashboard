@@ -37,6 +37,10 @@ const routes: Routes = [
                 loadChildren: './dashboard/admin-dashboard/evaluator-result/evaluator-result.module#EvaluatorResultModule'
             },
             {
+                path: 'student-performance-report',
+                loadChildren: './dashboard/admin-dashboard/student-spr/student-spr.module#StudentSprModule'
+            },
+            {
                 path: 'view-school-result',
                 loadChildren: './dashboard/view-school-rslt/view-school-rslt.module#ViewSchoolRsltModule'
             },
