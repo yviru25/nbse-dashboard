@@ -81,9 +81,9 @@ export class StudentSprComponent implements OnInit {
                  for (let s = 0; s < jsonArr.length; s++) {
                     let marks = '';
                     if (jsonArr[s].marks === null) {
-                        marks = 'In-Progress';
+                        marks = 'INP';
                     } else if (jsonArr[s].marks === -1) {
-                        marks = 'Absent';
+                        marks = 'AB';
                     } else {
                         marks = jsonArr[s].marks;
                     }

@@ -50,8 +50,8 @@
                 <thead>
                   <tr>
                     <th scope="col" width="5%">S No</th>
-                    <th scope="col" width="8%">Roll No</th>
-                    <th scope="col" width="22%">Student Name</th>
+                    <th scope="col" width="10%">Roll No</th>
+                    <th scope="col" width="20%">Student Name</th>
                     <th colspan="6">Subject </th>
                    <!--  <th scope="col" width="10%">Math (B)</th>
                     <th scope="col" width="10%">Science</th>
@@ -66,9 +66,9 @@
                   <tr *ngFor="let item of gridData;let i=index" >
                     <td>{{i+1}}</td>
                     <td scope="row" >{{item.rollNo}}</td>
-                    <td scope="row">{{item.studentName}}</td>
-                    <td scope="row" *ngFor="let s of [0,1,2,3,4,5]">
-                      {{item.subjectName[s]?.subjectMarks == undefined ? '-' : (item.subjectName[s]?.subjectName +" - "+ item.subjectName[s]?.subjectMarks)}}
+                    <td scope="row" style="text-align: left;">{{item.studentName}}</td>
+                    <td scope="row" style="text-align: left; font-weight: bold;" *ngFor="let s of [0,1,2,3,4,5]">
+                      {{item.subjectName[s]?.subjectMarks == undefined ? '-' : (item.subjectName[s]?.subjectName +" - "+item.subjectName[s]?.subjectMarks)}}
                     </td>
                   </tr>
                 </tbody>
