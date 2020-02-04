@@ -39,16 +39,19 @@
               <button type="button" mat-raised-button color="warn" (click)="printToCart('printSectionId')" class="w-100">Print</button>
             </div>
             <div id="printSectionId">
-            <div fxLayout="row" fxLayoutAlign="center" *ngIf="false" >
-              <h2>Student Performance Report (SPR)</h2>
-            </div>
+              <div fxLayout="row" fxLayoutAlign="center">
+                <h3>Student Performance Report (SPR)</h3>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="center">
+                <h3>School Code:- {{searchStudentModel.schoolCode}}  Class:- {{searchStudentModel.class}}</h3>
+              </div>
             <table class="flatTable">
                 <colgroup span="4"></colgroup>
                 <thead>
                   <tr>
                     <th scope="col" width="5%">S No</th>
-                    <th scope="col" width="10%">Roll No</th>
-                    <th scope="col" width="15%">Student Name</th>
+                    <th scope="col" width="8%">Roll No</th>
+                    <th scope="col" width="22%">Student Name</th>
                     <th colspan="6">Subject </th>
                    <!--  <th scope="col" width="10%">Math (B)</th>
                     <th scope="col" width="10%">Science</th>
