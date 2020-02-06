@@ -127,6 +127,8 @@ export class ViewResultComponent implements OnInit {
    let studentMarks = '';
    if (Number(this.studentAbsentModel.attendanceType) === -1) {
     studentMarks = '-1';
+   } else if (Number(this.studentAbsentModel.attendanceType) === -2) {
+    studentMarks = '-2';
    } else if (Number(this.studentAbsentModel.attendanceType) === 0) {
     studentMarks = 'null';
    } else {

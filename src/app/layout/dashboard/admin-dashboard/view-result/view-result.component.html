@@ -56,7 +56,7 @@
                     <td scope="row">{{item.class_id}}</td>
                     <td scope="row">{{item.subject_id}}</td>
                     <td scope="row">{{item.subjectName}}</td>
-                    <td scope="row">{{item.marks_received == null?'In-Progress':item.marks_received==-1?'Absent':item.marks_received}}</td>
+                    <td scope="row">{{item.marks_received == null?'In-Progress':item.marks_received==-1?'Absent':item.marks_received == -2?'NDA':item.marks_received}}</td>
                     <td>
                       <a href="javascript:void(0)" (click)="getStudentDetailByStudentId(item.studentId)">
                           <i class="material-icons">
@@ -101,6 +101,7 @@
                               <mat-option [value]="-1" >Absent</mat-option>
                               <mat-option [value]="1" >Present</mat-option>
                               <mat-option [value]="0">In-Progress</mat-option>
+                              <mat-option [value]="-2" >NDA</mat-option>
                           </mat-select>
                       </mat-form-field>
                   </td>
